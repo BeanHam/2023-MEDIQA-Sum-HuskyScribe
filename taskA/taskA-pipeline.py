@@ -82,6 +82,7 @@ def main():
     data = data.drop(col_names_to_del, axis=1)
     data = data.rename({'ID': 'TestID'}, axis=1)
     data.to_csv('taskA_HuskyScribe_run1.csv', index=False)
-    
+    shutil.rmtree('tmp/')
+    shutil.rmtree('exp/')
 if __name__ == "__main__":
     main()   
