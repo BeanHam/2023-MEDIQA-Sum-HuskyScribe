@@ -5,7 +5,6 @@ import shutil
 import json
 import torch
 from tqdm import tqdm
-from transformers import pipeline
 from model_utils import *
 from model_constants import *
 
@@ -36,15 +35,6 @@ def main():
     #-------------------------
     print('Load Data...')
     data = pd.read_csv(args.data)
-    dialogues = data['dialogue']
-    
-    #-------------------------
-    # load summerizer
-    #-------------------------
-    print('Load Summarizer...')
-    summarizer = pipeline("summarization", model="beanham/mediqa-samsum-dialoguesum")
-    tokenizer_kwargs = {'truncation':True}
-    summaries = [summarizer(dialogue)[0]['summary_text'] for dialogue in tqdm(dialogues)]
     
     #-------------------------
     # load section predictor
@@ -87,13 +77,11 @@ def main():
     # output results
     #-------------------------
     data['SystemOutput1'] = pred_headers
-    data['SystemOutput2'] = summaries
-    col_names_to_keep = ['ID','SystemOutput1', 'SystemOutput2']
+    col_names_to_keep = ['ID','SystemOutput1']
     col_names_to_del = [x for x in data.columns if x not in col_names_to_keep]
     data = data.drop(col_names_to_del, axis=1)
     data = data.rename({'ID': 'TestID'}, axis=1)
     data.to_csv('taskA_HuskyScribe_run1.csv', index=False)
     
 if __name__ == "__main__":
-    main()
-    
+    main()   
