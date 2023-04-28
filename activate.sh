@@ -1,0 +1,1 @@
+source HuskyScribe_venv/bin/activate
