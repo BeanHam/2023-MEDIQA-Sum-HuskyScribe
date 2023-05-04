@@ -81,7 +81,7 @@ def main():
     col_names_to_del = [x for x in data.columns if x not in col_names_to_keep]
     data = data.drop(col_names_to_del, axis=1)
     data = data.rename({'ID': 'TestID'}, axis=1)
-    data.to_csv('taskA_HuskyScribe_run1.csv', index=False)
+    data.to_csv('taskA_HuskyScribe_run1_mediqaSum.csv', index=False)
     shutil.rmtree('tmp/')
     shutil.rmtree('exp/')
 if __name__ == "__main__":
