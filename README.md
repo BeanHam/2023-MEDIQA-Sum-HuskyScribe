@@ -1,5 +1,5 @@
 # MEDIQA-shared-tasks
-This is our repo for MEDIQA-Sum shared tasks, 2023 (**Website**: https://sites.google.com/view/mediqa2023/clinicalnlp-mediqa-chat-2023)
+This is our repo for MEDIQA-Sum shared tasks, 2023 (**Website**: https://www.imageclef.org/2023/medical/mediqa)
 
 ## Tasks
 - **Task A - Short Dialogue2Note Summarization**: generating a section summary (section header and content) associated with the short input conversation. Section header will be one of twenty normalized section labels provided with the training data. 
