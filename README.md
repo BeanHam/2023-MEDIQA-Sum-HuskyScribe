@@ -2,10 +2,9 @@
 This is our repo for MEDIQA-Sum shared tasks, 2023 (**Website**: https://www.imageclef.org/2023/medical/mediqa)
 
 ## Tasks
-- **Task A - Short Dialogue2Note Summarization**: generating a section summary (section header and content) associated with the short input conversation. Section header will be one of twenty normalized section labels provided with the training data. 
-- **Task B - Full Dialogue2Note Summarization**: generating a clinical note from the full input conversation. The note should include all relevant sections. Accepted first-level section headers are: "HISTORY OF PRESENT ILLNESS", "PHYSICAL EXAM", "RESULTS", "ASSESSMENT AND PLAN". 
-
-We only attempted Task A and Task B.
+- **Subtask A - Dialogue2Topic Classification**.  Given a conversation snippet between a doctor and patient, participants are tasked with identifying the topic (associated section header). Topics/Section headers will be one of twenty normalized common section labels (e.g. Assessment, Diagnosis, Exam, Medications, Past Medical History).
+- **Subtask B - Dialogue2Note Summarization**. Given a conversation snippet between a doctor and patient and a section header, participants are tasked with producing a clinical note section text summarizing the conversation.
+- **Subtask C - Full-Encounter Dialogue2Note Summarization**. Given a full encounter conversation between a doctor and patient, participants are tasked with producing a full clinical note summarizing the conversation
 
 ## Inference 
 To run our model on the test dataset, do the following:
