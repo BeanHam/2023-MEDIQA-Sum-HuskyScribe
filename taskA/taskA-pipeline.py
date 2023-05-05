@@ -77,7 +77,7 @@ def main():
     # output results
     #-------------------------
     data['SystemOutput1'] = pred_headers
-    col_names_to_keep = ['ID','SystemOutput1']
+    col_names_to_keep = ['ID','SystemOutput']
     col_names_to_del = [x for x in data.columns if x not in col_names_to_keep]
     data = data.drop(col_names_to_del, axis=1)
     data = data.rename({'ID': 'TestID'}, axis=1)
