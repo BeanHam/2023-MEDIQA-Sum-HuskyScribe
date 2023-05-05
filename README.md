@@ -22,11 +22,11 @@ source ./activate.sh
 cd taskA
 source ./decode_taskA_run1.sh
 ```
-The output will be a .csv file: "taskA_HuskyScribe_run1.csv"
+The output will be a .csv file: "taskA_HuskyScribe_run1_mediqaSum.csv"
 
 3. To run Task B, do the following cmd lines:
 ```
 cd taskB
 source ./decode_taskB_run1.sh
 ```
-The output will be a .csv file: "taskB_HuskyScribe_run1.csv"
+The output will be a .csv file: "taskB_HuskyScribe_run1_mediqaSum.csv"
