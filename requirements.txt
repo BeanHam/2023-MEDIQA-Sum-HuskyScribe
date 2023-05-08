@@ -63,6 +63,7 @@ sacred==0.8.4
 scipy==1.10.0
 sentencepiece==0.1.97
 six==1.16.0
+simplet5==0.1.4
 tensorboard==2.11.2
 tensorboard-data-server==0.6.1
 tensorboard-plugin-wit==1.8.1
@@ -74,7 +75,7 @@ tf-slim==1.1.0
 tokenizers==0.13.2
 torch==1.13.1
 tqdm==4.64.1
-transformers==4.26.0
+transformers==4.16.2
 typing_extensions==4.4.0
 urllib3==1.26.14
 Werkzeug==2.2.2
