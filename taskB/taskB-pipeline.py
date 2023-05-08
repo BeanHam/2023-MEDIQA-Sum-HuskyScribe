@@ -5,9 +5,7 @@ import shutil
 import json
 import torch
 from tqdm import tqdm
-from transformers import pipeline
-from model_utils import *
-from model_constants import *
+from simplet5 import SimpleT5
 
 def main():
     
@@ -32,10 +30,10 @@ def main():
     # load summerizer
     #-------------------------
     print('Load Summarizer...')
-    summarizer = pipeline("summarization", model="beanham/bart-large-finetune")
-    tokenizer_kwargs = {'truncation':True}
-    summaries = [summarizer(dialogue)[0]['summary_text'] for dialogue in tqdm(dialogues)]
-        
+    model = SimpleT5()
+    model.load_model("t5","beanham/t5-large", use_gpu=True)
+    summaries = [model.predict(dialogue)[0] for dialogue in tqdm(dialogues)]
+
     #-------------------------
     # output results
     #-------------------------
