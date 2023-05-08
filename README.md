@@ -30,3 +30,11 @@ cd taskB
 source ./decode_taskB_run1.sh
 ```
 The output will be a .csv file: "taskB_HuskyScribe_run1_mediqaSum.csv"
+
+#### 4. To run Task C, do the following cmd lines:
+```
+cd taskC
+source ./decode_taskC_run1.sh
+source ./decode_taskC_run2.sh
+```
+There will be two output .csv files: "taskC_HuskyScribe_run1_mediqaSum.csv", "taskC_HuskyScribe_run2_mediqaSum.csv"
