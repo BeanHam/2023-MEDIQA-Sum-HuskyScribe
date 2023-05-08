@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=0 python taskB-pipeline.py --data taskB_testset4participants_inputHeadersAndConversations.csv
