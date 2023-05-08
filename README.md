@@ -9,7 +9,7 @@ This is our repo for MEDIQA-Sum shared tasks, 2023 (**Website**: https://www.ima
 ## Inference 
 To run our model on the test dataset, do the following:
 
-1. To set up the environment, clone this repo and do the following cmd lines:
+#### 1. To set up the environment, clone this repo and do the following cmd lines:
 ```
 ## install.sh creates the environment & install all packages
 source ./install.sh
@@ -17,14 +17,14 @@ source ./install.sh
 source ./activate.sh
 ``` 
 
-2. To run Task A, do the following cmd lines:
+#### 2. To run Task A, do the following cmd lines:
 ```
 cd taskA
 source ./decode_taskA_run1.sh
 ```
 The output will be a .csv file: "taskA_HuskyScribe_run1_mediqaSum.csv"
 
-3. To run Task B, do the following cmd lines:
+#### 3. To run Task B, do the following cmd lines:
 ```
 cd taskB
 source ./decode_taskB_run1.sh
