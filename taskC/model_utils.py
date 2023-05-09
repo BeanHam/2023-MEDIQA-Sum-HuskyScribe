@@ -150,7 +150,7 @@ def t5_canonical_section_classfier(list_of_dialogue_chunks):
     #load_weights_from='sitongz/medqa_taskB_t5-base_seq_synthetic_onl-checkpoint-11000'
     load_weights_from='/home/sitongz/2023-MEDIQA-shared-tasks/taskB/exp/t5-base_train_multilabel_filter30/model/checkpoint-198'
     # assume run in taskB
-    load_weights_from='exp/t5-base_train_multilabel_filter30/model/checkpoint-198'
+    # load_weights_from='exp/t5-base_train_multilabel_filter30/model/checkpoint-198'
     cmd_t5 = f"""python train_t5_with_trainer.py with \
             do_predict=True do_train=False do_predict=True \
             load_weights_from={load_weights_from} \
