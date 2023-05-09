@@ -77,6 +77,7 @@ def aggregator(dialogue, summarizer):
 
             # Append note heading
             note.append(subsection+':')
+            section_text.append(subsection+':')
 
             # Extract subsection texts
             dialogue_index = np.where(dialogue_labels == subsection)[0]
@@ -85,6 +86,7 @@ def aggregator(dialogue, summarizer):
 
             if len(all_index) == 0:
                 note.append('None\n')
+                section_text.append('None\n')
                 continue
             subsection_chunks = dialogue_chunks[all_index]
             subsection_text = '\n'.join(subsection_chunks)
