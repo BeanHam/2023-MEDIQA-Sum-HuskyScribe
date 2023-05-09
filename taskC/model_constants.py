@@ -13,7 +13,6 @@ CANONICAL_CLASSES = ['CHIEF COMPLAINT',
                      'REVIEW OF SYSTEMS',
                      'HISTORY OF PRESENT ILLNESS',
                      'PHYSICAL EXAM',
-                     'INSTRUCTIONS',
                      'ASSESSMENT AND PLAN',
                      'VITALS',
                      'MEDICATIONS',
@@ -43,28 +42,28 @@ TASKA_TO_CANONICAL['IMMUNIZATIONS'] = 'MEDICAL HISTORY'
 TASKA_TO_CANONICAL['PROCEDURES'] = 'ASSESSMENT AND PLAN'
 TASKA_TO_CANONICAL['GYNECOLOGICAL HISTORY'] = 'HISTORY OF PRESENT ILLNESS'
 TASKA_TO_CANONICAL['EXAM'] = 'PHYSICAL EXAM'
-TASKA_TO_CANONICAL['DIAGNOSIS'] = 'RESULTS'
+TASKA_TO_CANONICAL['DIAGNOSIS'] = 'ASSESSMENT AND PLAN'
 TASKA_TO_CANONICAL['LABS'] = 'RESULTS'
 TASKA_TO_CANONICAL['IMAGING'] = 'RESULTS'
 TASKA_TO_CANONICAL['ASSESSMENT'] = 'ASSESSMENT AND PLAN'
 TASKA_TO_CANONICAL['PLAN'] = 'ASSESSMENT AND PLAN'
 TASKA_TO_CANONICAL['OTHER'] = 'OTHER'
 TASKA_TO_CANONICAL['DISPOSITION'] = 'ASSESSMENT AND PLAN'
-TASKA_TO_CANONICAL['ED COURSE'] = 'CHIEF COMPLAINT'
+TASKA_TO_CANONICAL['ED COURSE'] = 'HISTORY OF PRESENT ILLNESS'
 
 #--------------------------------------------------------
 # abbreviated header to full header
 #--------------------------------------------------------
 SECTION2FULL = {'GENHX': 'General History',
- 'FAM/SOCHX': 'Family and Social History',
- 'PASTSURGICAL': 'past surgical',
- 'ROS': 'Review of System',
- 'ASSESSMENT': 'Assessment',
- 'PASTMEDICALHX': 'Past Medical History',
- 'MEDICATIONS': 'MEDICATIONS',
- 'GYNHX': 'gynecological history',
- 'CC': 'Chief Complaints',
- 'EDCOURSE': 'emergency department'
+                'FAM/SOCHX': 'Family and Social History',
+                'PASTSURGICAL': 'past surgical',
+                'ROS': 'Review of System',
+                'ASSESSMENT': 'Assessment',
+                'PASTMEDICALHX': 'Past Medical History',
+                'MEDICATIONS': 'MEDICATIONS',
+                'GYNHX': 'gynecological history',
+                'CC': 'Chief Complaints',
+                'EDCOURSE': 'emergency department'
 }
 
 #--------------------------------------------
