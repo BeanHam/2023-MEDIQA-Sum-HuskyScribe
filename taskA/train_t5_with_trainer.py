@@ -263,9 +263,11 @@ def main(train_csv,val_csv, model_short_name, seed,fast_run,
         predictions,_, test_metrics= trainer.predict(tokenized_val_set['test'])
         decoded_preds = tokenizer.batch_decode(predictions, skip_special_tokens=True)
         print(f'save to {test_metric_fn}')
+        print(decoded_preds)
         json.dump([{'output':p,
                     'converted_output': convert_full2section(p.split('Answer:')[-1].strip())} for p in decoded_preds], open(test_pred_fn  , 'w'))
         print(f'save to {test_pred_fn}')
+        import pdb; pdb.set_trace()
         json.dump(test_metrics, open(test_metric_fn, 'w'))
 
 

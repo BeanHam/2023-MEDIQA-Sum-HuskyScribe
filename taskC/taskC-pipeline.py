@@ -84,11 +84,11 @@ def aggregator(dialogue, summarizer, tokenizer_kwargs):
     dialogue_labels = np.array([CLASSIFICATION_MAP[label] for label in dialogue_labels])
     
     dialogue_labels_canonical = np.array([[tt.strip() if tt.strip() in CANONICAL_CLASSES else 'OTHER' for tt in label[7:].strip().upper().split(',')] for label in dialogue_labels_canonical])
-    import pdb; pdb.set_trace()
+
     # log intermediate
     t5_pred_outputs['postprocessed_subsection_pred'] = dialogue_labels.tolist()
     t5_pred_outputs['postprocessed_canonical_pred'] = dialogue_labels_canonical.tolist()
-    import pdb; pdb.set_trace()
+
     # Generated note 
     note = []
     

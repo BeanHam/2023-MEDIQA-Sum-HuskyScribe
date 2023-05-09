@@ -78,6 +78,9 @@ def my_config():
     do_train = False
     do_predict = False
     load_weights_from = None
+    eval_steps = 66
+    save_steps = 66
+
 
 
     model_short_name = 'clinical-t5-scratch'
@@ -101,7 +104,7 @@ def my_config():
 
 
 @ex.automain
-def main(train_csv,val_csv, model_short_name, seed,fast_run,
+def main(train_csv,val_csv, model_short_name, seed,fast_run, save_steps, eval_steps,
     train_bs,val_bs,gradient_accumulation_steps,train_ep, val_ep, max_input_length, max_target_length,max_epochs,max_steps,
      do_train, do_predict, load_weights_from ,pretrain_model_path,
      test_metric_fn, test_pred_fn, model_output_dir):
@@ -178,12 +181,13 @@ def main(train_csv,val_csv, model_short_name, seed,fast_run,
         weight_decay=0.01,
         save_total_limit=3,
         num_train_epochs=max_epochs,
-        eval_steps = 1000,
-        save_steps = 1000,
+        eval_steps = eval_steps,
+        save_steps = save_steps,
         predict_with_generate=True,
         max_steps = max_steps,
          load_best_model_at_end=True,
          metric_for_best_model = 'eval_rougeLsum',
+         generation_max_length = max_target_length
     )
 
 
