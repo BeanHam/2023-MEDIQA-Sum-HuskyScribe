@@ -69,11 +69,13 @@ def aggregator(dialogue, summarizer, tokenizer_kwargs):
     # log intermediate
     t5_pred_outputs['dialogue_chunks'] = dialogue_chunks_cleaned.tolist()
     # Determin subsection for each dialogue chunk
-    dialogue_labels = t5_subsection_classfier([dialogue_chunks_cleaned.tolist()])
+    #dialogue_labels = t5_subsection_classfier([dialogue_chunks_cleaned.tolist()])
+    dialogue_labels = t5_subsection_classfier([dialogue_chunks_cleaned.tolist()], ontology_version = 'original_new')
+
     dialogue_labels_canonical = t5_canonical_section_classfier([dialogue_chunks.tolist()])
 
-    print('dialogue_labels', dialogue_labels)
-    print('dialogue_labels_canonical',dialogue_labels_canonical)
+    #print('dialogue_labels', dialogue_labels)
+    #print('dialogue_labels_canonical',dialogue_labels_canonical)
 
     # log intermediate  
     t5_pred_outputs['t5_subsection_pred'] = dialogue_labels

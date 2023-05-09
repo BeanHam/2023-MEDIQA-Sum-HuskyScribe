@@ -1,6 +1,6 @@
 import json
 import pandas as pd
-from model_constants import topic_ontology, SECTION2FULL, topic_ontology_canonical
+from model_constants import topic_ontology, SECTION2FULL, topic_ontology_canonical, topic_ontology_new
 
 def convert_dialogue_chunks2t5input_topic(dialogue_chunks, ontology = topic_ontology):
    
@@ -50,7 +50,9 @@ def write_dialogue_chunk_list(list_of_dialogue_chunks, output_file, ontology_ver
     '''
     # load ontology by version
     ontology_dict = {'original': topic_ontology,
+                     'original_new': topic_ontology_new,
                      'canonical': topic_ontology_canonical,
+
                      }
     ontology = ontology_dict[ontology_version]
     # convert list of dialogue_chunks into T5 input format

@@ -15,7 +15,7 @@ def download_url_to_file(url, file):
         print(f'downloading model from {url} to {file}')
 
 
-def t5_subsection_classfier(list_of_dialogue_chunks):
+def t5_subsection_classfier(list_of_dialogue_chunks, ontology_version = 'original'):
 
     # write labels_in_batch in file as test_file
     # run python script to predict
@@ -38,7 +38,7 @@ def t5_subsection_classfier(list_of_dialogue_chunks):
     #-----------------------------------
     # urls 
     #-----------------------------------
-    write_dialogue_chunk_list(list_of_dialogue_chunks, 'tmp/t5_test.csv')
+    write_dialogue_chunk_list(list_of_dialogue_chunks, 'tmp/t5_test.csv', ontology_version = ontology_version)
     model_ckp = 'finetuned-model'
     model_short_name = 'clinical-t5-scratch'
     pretrain_path = f"../models/Clinical-T5-Scratch"
