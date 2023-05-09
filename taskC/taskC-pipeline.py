@@ -77,12 +77,16 @@ def aggregator(dialogue, summarizer, tokenizer_kwargs):
 
     # log intermediate  
     t5_pred_outputs['t5_subsection_pred'] = dialogue_labels
+    t5_pred_outputs['dialogue_labels_canonical'] = dialogue_labels_canonical
 
     dialogue_labels = np.array([label[7:].strip().upper() for label in dialogue_labels])
     index = np.array([label in CLASSIFICATION_MAP.keys() for label in dialogue_labels])
     dialogue_labels[~index] = 'OTHER'
+
+    # task A label: subsection
     dialogue_labels = np.array([CLASSIFICATION_MAP[label] for label in dialogue_labels])
     
+    # task C label: alignment annotation
     dialogue_labels_canonical = np.array([[tt.strip() if tt.strip() in CANONICAL_CLASSES else 'OTHER' for tt in label[7:].strip().upper().split(',')] for label in dialogue_labels_canonical])
 
     # log intermediate
@@ -187,11 +191,11 @@ def main():
     col_names_to_keep = ['encounter_id','SystemOutput']
     col_names_to_del = [x for x in data.columns if x not in col_names_to_keep]
     data = data.drop(col_names_to_del, axis=1)
-    data.to_csv('taskB_HuskyScribe_run1.csv', index=False)
+    data.to_csv('taskC_HuskyScribe_run1.csv', index=False)
     
 
     df_section_pred_all = pd.DataFrame(section_pred_outputs_all)
-    df_section_pred_all.to_csv('taskB_HuskyScribe_run1_sectino_pred_by_chunk.csv', index=False)
+    df_section_pred_all.to_csv('taskC_HuskyScribe_run1_sectino_pred_by_chunk.csv', index=False)
 
 
 if __name__ == "__main__":

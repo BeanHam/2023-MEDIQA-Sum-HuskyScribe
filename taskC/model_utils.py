@@ -85,7 +85,6 @@ def t5_subsection_classfier(list_of_dialogue_chunks):
             test_pred_fn={pred_fn}"""
     cmd = cmd_t5
     print("run",cmd)
-
     out = os.system(cmd)
     print('finish section prediction')
 
@@ -152,7 +151,6 @@ def t5_canonical_section_classfier(list_of_dialogue_chunks):
     load_weights_from='/home/sitongz/2023-MEDIQA-shared-tasks/taskB/exp/t5-base_train_multilabel_filter30/model/checkpoint-198'
     # assume run in taskB
     load_weights_from='exp/t5-base_train_multilabel_filter30/model/checkpoint-198'
-
     cmd_t5 = f"""python train_t5_with_trainer.py with \
             do_predict=True do_train=False do_predict=True \
             load_weights_from={load_weights_from} \
@@ -164,7 +162,6 @@ def t5_canonical_section_classfier(list_of_dialogue_chunks):
             test_pred_fn={pred_fn}"""
     cmd = cmd_t5
     print("run",cmd)
-
     out = os.system(cmd)
     if out!=0:
         print("run",cmd)

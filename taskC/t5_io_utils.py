@@ -62,7 +62,7 @@ def write_dialogue_chunk_list(list_of_dialogue_chunks, output_file, ontology_ver
         
         t5_data += t5_data_t
     
-    print(json.dumps(t5_data, indent=4))
+    #print(json.dumps(t5_data, indent=4))
     df = pd.DataFrame(t5_data)
     print('save to ', output_file)
     df.to_csv(output_file, index=False)

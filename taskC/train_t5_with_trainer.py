@@ -49,7 +49,6 @@ def compute_metrics_any_tokenizer(eval_pred, tokenizer):
     # Rouge expects a newline after each sentence
     decoded_preds = ["\n".join(nltk.sent_tokenize(pred.strip())) for pred in decoded_preds]
     decoded_labels = ["\n".join(nltk.sent_tokenize(label.strip())) for label in decoded_labels]
-    print('decoded_preds',decoded_preds)
     result = metric.compute(predictions=decoded_preds, references=decoded_labels)
     # Extract a few results
     result = {key: value.mid.fmeasure * 100 for key, value in result.items()}
