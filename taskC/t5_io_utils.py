@@ -2,17 +2,17 @@ import json
 import pandas as pd
 from model_constants import topic_ontology, SECTION2FULL, topic_ontology_canonical, topic_ontology_new
 
-def convert_dialogue_chunks2t5input_topic(dialogue_chunks, ontology = topic_ontology):
+# def convert_dialogue_chunks2t5input_topic(dialogue_chunks, ontology = topic_ontology):
    
-    t5_data = []
-    for turn in dialogue_chunks:
-        t5_input = f" {turn} Question: what is the section topic among categories below? {topic_ontology} "
-        #t5_input = f" {turn} Question: what is the current section topic ? and Is the current section a different topic from the previous section? {ontology}"
+#     t5_data = []
+#     for turn in dialogue_chunks:
+#         t5_input = f" {turn} Question: what is the section topic among categories below? {topic_ontology} "
+#         #t5_input = f" {turn} Question: what is the current section topic ? and Is the current section a different topic from the previous section? {ontology}"
 
-        t5_output = "Answer: DISPOSITION "
-        t5_data.append({'t5_input':  t5_input,
-                         't5_output': t5_output })
-    return t5_data
+#         t5_output = "Answer: DISPOSITION "
+#         t5_data.append({'t5_input':  t5_input,
+#                          't5_output': t5_output })
+#     return t5_data
 
 def convert_dialogue_chunks2t5input_seq(dialogue_chunks, ontology = topic_ontology):
    

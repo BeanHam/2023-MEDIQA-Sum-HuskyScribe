@@ -56,10 +56,10 @@ def aggregator(dialogue, summarizer):
         
     # taskB canonical headers
     dialogue_labels_canonical = t5_canonical_section_classfier([dialogue_chunks.tolist()])
-    dialogue_labels_canonical = np.array([label[7:].strip().upper() for label in dialogue_labels_canonical])
-    index = np.array([label in CANONICAL_CLASSES for label in dialogue_labels_canonical])
-    dialogue_labels_canonical[~index] = 'OTHER'
+    dialogue_labels_canonical = np.array([[tt.strip() if tt.strip() in CANONICAL_CLASSES else 'OTHER' for tt in label[7:].strip().upper().split(',')] for label in dialogue_labels_canonical])
 
+    # print('dialogue_labels_canonical',dialogue_labels_canonical)
+    # print('dialogue_labels', dialogue_labels)
     # Generated note
     note = []
     note_sections = []

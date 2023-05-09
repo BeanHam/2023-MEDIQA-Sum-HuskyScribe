@@ -145,15 +145,15 @@ def t5_canonical_section_classfier(list_of_dialogue_chunks):
 
     #val_csv='/home/sitongz/2023-MEDIQA-shared-tasks/taskB/t5_multilable_data_filter30_dev.csv'
     model_short_name = 't5-base'
-    pretrain_path='sitongz/medqa_taskB_t5-base_seq_synthetic_onl-checkpoint-11000'
+    #pretrain_path='sitongz/medqa_taskB_t5-base_seq_synthetic_onl-checkpoint-11000'
+    pretrain_path='sitongz/medqa_sum_taskC_t5-base_seq_synthetic_only_mutltilabel_filter30'
     tmp_fn = 'tmp/t5_test_canonical.csv'
     #load_weights_from='sitongz/medqa_taskB_t5-base_seq_synthetic_onl-checkpoint-11000'
-    load_weights_from='/home/sitongz/2023-MEDIQA-shared-tasks/taskB/exp/t5-base_train_multilabel_filter30/model/checkpoint-198'
+    #load_weights_from='/home/sitongz/2023-MEDIQA-shared-tasks/taskB/exp/t5-base_train_multilabel_filter30/model/checkpoint-198'
     # assume run in taskB
     # load_weights_from='exp/t5-base_train_multilabel_filter30/model/checkpoint-198'
     cmd_t5 = f"""python train_t5_with_trainer.py with \
             do_predict=True do_train=False do_predict=True \
-            load_weights_from={load_weights_from} \
             task_name='tmp' max_epochs=0 \
             train_csv={tmp_fn} \
             val_csv={tmp_fn} \
