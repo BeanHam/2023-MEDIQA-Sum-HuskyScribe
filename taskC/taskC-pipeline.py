@@ -46,20 +46,24 @@ def aggregator(dialogue, summarizer):
     
     # Split dialogue into chunks
     dialogue_chunks_cleaned, dialogue_chunks = chunker(dialogue)
-    
+
     # taskA headers
     dialogue_labels = t5_subsection_classfier([dialogue_chunks_cleaned.tolist()], ontology_version = 'original_new')
     dialogue_labels = np.array([label[7:].strip().upper() for label in dialogue_labels])
     index = np.array([label in TASKA_TO_CANONICAL.keys() for label in dialogue_labels])
     dialogue_labels[~index] = 'OTHER'
     dialogue_labels = np.array([TASKA_TO_CANONICAL[label] for label in dialogue_labels])
-        
+
     # taskB canonical headers
     dialogue_labels_canonical = t5_canonical_section_classfier([dialogue_chunks.tolist()])
-    dialogue_labels_canonical = np.array([[tt.strip() if tt.strip() in CANONICAL_CLASSES else 'OTHER' for tt in label[7:].strip().upper().split(',')] for label in dialogue_labels_canonical])
+    dialogue_labels_canonical = [[tt.strip() if tt.strip() in CANONICAL_CLASSES else 'OTHER' for tt in label[7:].strip().upper().split(',')] for label in dialogue_labels_canonical]
 
-    # print('dialogue_labels_canonical',dialogue_labels_canonical)
-    # print('dialogue_labels', dialogue_labels)
+    # all labels
+    all_labels = dialogue_labels_canonical.copy()
+    for i in range(len(all_labels)):
+        all_labels[i].append(dialogue_labels[i])
+        all_labels[i] = np.unique(all_labels[i]).tolist()
+
     # Generated note
     note = []
     note_sections = []
@@ -80,15 +84,13 @@ def aggregator(dialogue, summarizer):
             section_text.append(subsection+':')
 
             # Extract subsection texts
-            dialogue_index = np.where(dialogue_labels == subsection)[0]
-            dialogue_canonical_index = np.where(dialogue_labels_canonical == subsection)[0]
-            all_index = np.unique(np.concatenate([dialogue_index, dialogue_canonical_index]))
+            index = np.where([subsection in label for label in all_labels])[0]
 
-            if len(all_index) == 0:
+            if len(index) == 0:
                 note.append('None\n')
                 section_text.append('None\n')
                 continue
-            subsection_chunks = dialogue_chunks[all_index]
+            subsection_chunks = dialogue_chunks[index]
             subsection_text = '\n'.join(subsection_chunks)
 
             # Get summary
@@ -160,11 +162,6 @@ def main():
         objective_exam.append(section_note[1])
         objective_result.append(section_note[2])
         ap.append(section_note[3])
-    #np.save('summaries.npy', summaries)
-    #np.save('subjective.npy', subjective)
-    #np.save('objective_exam.npy', objective_exam)
-    #np.save('objective_result.npy', objective_result)
-    #np.save('ap.npy', ap)
 
     #-------------------------
     # output results
