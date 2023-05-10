@@ -119,6 +119,8 @@ def main():
         description='This runs basic evaluation for both snippet (taskA) and full note summarization (taskB).'
     )
     parser.add_argument('--data', required=True, help='filename of test data')
+    parser.add_argument('--model', required=True, help='model name')
+    parser.add_argument('--run_num', required=True)
     args = parser.parse_args()
     
     #-------------------------
@@ -143,7 +145,7 @@ def main():
     #-------------------------
     print('Load Summarizer...')
     summarizer = SimpleT5()
-    summarizer.load_model("t5","beanham/t5-large", use_gpu=True)
+    summarizer.load_model("t5",args.model, use_gpu=True)
     
     #-------------------------
     # generate notes
@@ -174,7 +176,7 @@ def main():
     col_names_to_keep = ['encounter_id','note', 'subjective', 'objective_exam', 'objective_results', 'assessment_and_plan']
     col_names_to_del = [x for x in data.columns if x not in col_names_to_keep]
     data = data.drop(col_names_to_del, axis=1)
-    data.to_csv('taskC_HuskyScribe_run1_mediqaSum.csv', index=False)
+    data.to_csv(f'taskC_HuskyScribe_run{args.run_num}_mediqaSum.csv', index=False)
 
 if __name__ == "__main__":
     main()
